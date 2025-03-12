@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{ useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-const AddMovie = () => {
+const AddMovie = ({ movies, setmovies }) => {
     const tabNote=[1,2,3,4,5,6,7,8,9,10];
     const [titre, setTitre] = useState('');
     const [description, setDescription] = useState('');
@@ -13,9 +14,9 @@ const AddMovie = () => {
           titre,
           description,
           posterURL,
-          note: Number(rating),
+          note: Number(note),
         };
-        
+        setmovies([...movies, newMovie]);
         setTitre('');
         setDescription('');
         setPosterURL('');
@@ -35,8 +36,8 @@ const AddMovie = () => {
         <Form.Label>Note</Form.Label>
         <Form.Select aria-label="Default select example" onChange={(e) => setNote(e.target.value)}>
         <option value={note}>Open this select menu</option>
-        {tabNote.map((elemt)=>(
-        <option value="{elemt}">{elemt}</option>
+        {tabNote.map((elemt,index)=>(
+        <option key={index+1} value={elemt}>{elemt}</option>
         ))}
         
         </Form.Select>

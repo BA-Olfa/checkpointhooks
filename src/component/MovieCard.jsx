@@ -3,15 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
-const MovieCard = ({title,description,note,posterURL}) => {
+const MovieCard = ({titre,description,note,posterURL,id}) => {
   return (
     <Col key={id}>
     <Card className="CardMovie">
       <Card.Img variant="top" src={posterURL} className="imageMovie"/>
       <Card.Body>
-        <Card.Title className="nomMovie">{nom}</Card.Title>
+       
         <Card.Title>
-          <span style={{color: "#0070df"}}>Titre :</span><span>{title}</span>
+          <span style={{color: "#0070df"}}>Titre :</span><span>{titre}</span>
         </Card.Title>
         <Card.Title>
         <span style={{color: "#0070df"}}>Description :</span>
