@@ -23,18 +23,18 @@ const AddMovie = ({ movies, setmovies }) => {
         setNote(0);
       };
   return (
-    <Form>
+    <Form onSubmit={handleAddMovie}>
       <Form.Group className="mb-3">
         <Form.Label>Titre</Form.Label>
-        <Form.Control type="text" placeholder="" value={titre} onChange={(e) => setTitre(e.target.value)}/>
+        <Form.Control type="text" placeholder="" value={titre} onChange={(e) => setTitre(e.target.value)} required={true}/>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Description</Form.Label>
-        <Form.Control as="textarea" rows={3} value={description} onChange={(e) => setDescription(e.target.value)}/>
+        <Form.Control as="textarea" rows={3} value={description} onChange={(e) => setDescription(e.target.value)} required={true}/>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Note</Form.Label>
-        <Form.Select aria-label="Default select example" onChange={(e) => setNote(e.target.value)}>
+        <Form.Select aria-label="Default select example" onChange={(e) => setNote(e.target.value)} required={true}>
         <option value={note}>Open this select menu</option>
         {tabNote.map((elemt,index)=>(
         <option key={index+1} value={elemt}>{elemt}</option>
@@ -42,7 +42,7 @@ const AddMovie = ({ movies, setmovies }) => {
         
         </Form.Select>
       </Form.Group>
-      <Button variant="primary" onClick={handleAddMovie}>Ajouter film</Button>
+      <Button as="input" type="submit" value="Ajouter film" />
     </Form>
   )
 }
