@@ -9,7 +9,7 @@ const Filtre = ({ movies, setmovies }) => {
   const [note, setNote] = useState(0);
   const handleFilter = () => {
     const filtrerMovies = movies.filter(
-      (movie) => movie.titre.includes(titre) && movie.note >= note
+      (movie) =>  (titre ? movie.titre.includes(titre) : true) && (parseInt(movie.note) === parseInt(note))
     );
     setmovies(filtrerMovies);
   };
