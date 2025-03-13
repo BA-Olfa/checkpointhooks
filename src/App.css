@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.nomMovie{
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
+
+.imageMovie{
+  width:  300px !important;
+  height:  300px !important;
+}
+.CardMovie{
+  align-items: center;
+  margin-top: 5px;
+  height: 650px !important;
+}

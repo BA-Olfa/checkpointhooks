@@ -3,6 +3,8 @@ import { useState } from "react";
 import AddMovie from './component/AddMovie';
 import Filtre from './component/Filtre';
 import MovieList from './component/MovieList';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 function App() {
   const [movies,setMovies] = useState([
@@ -18,7 +20,7 @@ function App() {
         titre: "Anora",
         description: "Réalisé par Sean Baker, ce film raconte la transformation magique d'une danseuse exotique de Brooklyn. Il a été salué pour sa narration captivante et sa profondeur émotionnelle",
         posterURL: "./film2.jpeg",
-        note: "8,5/10"
+        note: "8/10"
     },
     {
         id: 3,
@@ -45,18 +47,22 @@ function App() {
         id: 6,
         titre: "Babygirl",
         description: "Avec Nicole Kidman, ce film aborde les dynamiques complexes du pouvoir dans les relations, offrant une réflexion profonde sur les interactions humaines.",
-        posterURL: "./film5.jpeg",
-        note: "7,5/10"
+        posterURL: "./film6.jpeg",
+        note: "7/10"
     },
   ]);
   return (
-    <div className="App">
-     
-      <Filtre movies={movies} setmovies={setMovies}></Filtre>
-      <AddMovie movies={movies} setmovies={setMovies}></AddMovie>
-      <MovieList movies={movies}></MovieList>
-
-    </div>
+    <Container fluid="md">
+        <Row>
+          <Filtre movies={movies} setmovies={setMovies}></Filtre>
+        </Row>
+        <Row>
+          <MovieList movies={movies}></MovieList>
+        </Row>
+        <Row>
+          <AddMovie movies={movies} setmovies={setMovies}></AddMovie>
+        </Row>
+    </Container>
   );
 }
 
