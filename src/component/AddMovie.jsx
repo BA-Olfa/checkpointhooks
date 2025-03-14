@@ -22,6 +22,13 @@ const AddMovie = ({ movies, setmovies }) => {
         setPosterURL('');
         setNote(0);
       };
+      const [file, setFile] = useState(null);
+      const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        if (selectedFile) {
+          setFile(selectedFile);
+        }
+      };
   return (
     <Form onSubmit={handleAddMovie}>
       <Form.Group className="mb-3">
@@ -42,6 +49,22 @@ const AddMovie = ({ movies, setmovies }) => {
         
         </Form.Select>
       </Form.Group>
+      <Form.Group controlId="formFile" className="mb-3">
+          <Form.Label>Upload un fichier</Form.Label>
+          <Form.Control type="file" onChange={handleFileChange} />
+        </Form.Group>
+        {file && (
+          <div className="mt-3">
+            {file.type.startsWith("image/") && (
+              <img
+                src={URL.createObjectURL(file)}
+                alt="Aperçu"
+                className="img-thumbnail mt-2"
+                style={{ maxWidth: "100%" }}
+              />
+            )}
+          </div>
+        )}
       <Button as="input" type="submit" value="Ajouter film" />
     </Form>
   )
