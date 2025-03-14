@@ -7,9 +7,11 @@ const AddMovie = ({ movies, setmovies }) => {
     const [titre, setTitre] = useState('');
     const [description, setDescription] = useState('');
     const [posterURL, setPosterURL] = useState('');
-    const [note, setNote] = useState('');
+    const [note, setNote] = useState('0');
+    const [file, setFile] = useState(null);
 
-    const handleAddMovie = () => {
+    const handleAddMovie = (event) => {
+        event.preventDefault();
         const newMovie = {
           titre,
           description,
@@ -20,12 +22,16 @@ const AddMovie = ({ movies, setmovies }) => {
         setTitre('');
         setDescription('');
         setPosterURL('');
-        setNote(0);
+        setNote('0');
+        setFile('')
       };
-      const [file, setFile] = useState(null);
+      
       const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
+       
         if (selectedFile) {
+          const url = URL.createObjectURL(selectedFile);
+          setPosterURL(url);
           setFile(selectedFile);
         }
       };
@@ -50,8 +56,8 @@ const AddMovie = ({ movies, setmovies }) => {
         </Form.Select>
       </Form.Group>
       <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Upload un fichier</Form.Label>
-          <Form.Control type="file" onChange={handleFileChange} />
+          <Form.Label>Importer une image </Form.Label>
+          <Form.Control type="file" accept="image/*" onChange={handleFileChange} required={true} />
         </Form.Group>
         {file && (
           <div className="mt-3">

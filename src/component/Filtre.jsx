@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import { Col } from 'react-bootstrap';
 
-const Filtre = ({ movies, setmovies }) => {
+
+const Filtre = ({ movies, setmovies,originalMovies }) => {
   const tabNote=[1,2,3,4,5,6,7,8,9,10];
   const [titre, setTitre] = useState('');
   const [note, setNote] = useState(0);
   const handleFilter = () => {
     const filtrerMovies = movies.filter(
-      (movie) =>  (titre ? movie.titre.includes(titre) : true) && (parseInt(movie.note) === parseInt(note))
+      (movie) =>  (titre ? movie.titre.includes(titre) : true) && (note>0 ? parseInt(movie.note) === parseInt(note): true)
     );
     setmovies(filtrerMovies);
   };
-  
+  const handleRest = () => {
+    setmovies(originalMovies);
+  };
   return (
     <>
     <Form>
@@ -31,7 +36,14 @@ const Filtre = ({ movies, setmovies }) => {
         
         </Form.Select>
       </Form.Group>
-      <Button variant="primary" onClick={handleFilter}>Filter</Button>
+      <Row xs="auto">
+        
+        <Col xs={2}><Button variant="primary" onClick={handleFilter}>Filter</Button></Col>
+        <Col xs={2}><Button variant="primary" onClick={handleRest}>Initialisation</Button></Col>
+        <Col xs={2}></Col>
+      </Row>
+      
+      
     </Form>
     </>
   )

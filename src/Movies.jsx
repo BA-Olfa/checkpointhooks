@@ -1,4 +1,4 @@
-const movies = [
+const originalMovies = [
     {
         id: 1,
         titre: "Wicked",
@@ -44,4 +44,4 @@ const movies = [
 
   ];
   
-  export default movies;
+  export default originalMovies;

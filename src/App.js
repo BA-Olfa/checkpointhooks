@@ -5,14 +5,14 @@ import Filtre from './component/Filtre';
 import MovieList from './component/MovieList';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import listmovies from './Movies'
+import originalMovies from './Movies'
 
 function App() {
-  const [movies,setMovies] = useState([...listmovies]);
+  const [movies,setMovies] = useState([...originalMovies]);
   return (
     <Container fluid="md">
         <Row>
-          <Filtre movies={movies} setmovies={setMovies}></Filtre>
+          <Filtre movies={movies} setmovies={setMovies} originalMovies={originalMovies}></Filtre>
         </Row>
         <Row>
           <MovieList movies={movies}></MovieList>
