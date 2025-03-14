@@ -15,11 +15,12 @@ function App() {
           <Filtre movies={movies} setmovies={setMovies} originalMovies={originalMovies}></Filtre>
         </Row>
         <Row>
-          <MovieList movies={movies}></MovieList>
-        </Row>
-        <Row>
           <AddMovie movies={movies} setmovies={setMovies}></AddMovie>
         </Row>
+        <Row>
+          <MovieList movies={movies}></MovieList>
+        </Row>
+        
     </Container>
   );
 }

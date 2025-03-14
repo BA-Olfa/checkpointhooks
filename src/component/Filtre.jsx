@@ -37,7 +37,6 @@ const Filtre = ({ movies, setmovies,originalMovies }) => {
         </Form.Select>
       </Form.Group>
       <Row xs="auto">
-        
         <Col xs={2}><Button variant="primary" onClick={handleFilter}>Filter</Button></Col>
         <Col xs={2}><Button variant="primary" onClick={handleRest}>Initialisation</Button></Col>
         <Col xs={2}></Col>

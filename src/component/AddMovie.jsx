@@ -1,6 +1,9 @@
 import React,{ useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 const AddMovie = ({ movies, setmovies }) => {
     const tabNote=[1,2,3,4,5,6,7,8,9,10];
@@ -23,7 +26,8 @@ const AddMovie = ({ movies, setmovies }) => {
         setDescription('');
         setPosterURL('');
         setNote('0');
-        setFile('')
+        setFile('');
+        handleClose()
       };
       
       const handleFileChange = (event) => {
@@ -35,7 +39,27 @@ const AddMovie = ({ movies, setmovies }) => {
           setFile(selectedFile);
         }
       };
+
+      const [show, setShow] = useState(false);
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
   return (
+    <>
+    <Form>
+    <Row xs="auto">
+        <Col xs={2}>
+        <Button variant="primary" onClick={handleShow}>
+        Ajouter Film 
+      </Button></Col>
+    </Row>
+    </Form>
+    
+
+    <Modal show={show} onHide={handleClose}  size="lg">
+    <Modal.Header closeButton>
+      <Modal.Title>Modal heading</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
     <Form onSubmit={handleAddMovie}>
       <Form.Group className="mb-3">
         <Form.Label>Titre</Form.Label>
@@ -48,7 +72,7 @@ const AddMovie = ({ movies, setmovies }) => {
       <Form.Group className="mb-3">
         <Form.Label>Note</Form.Label>
         <Form.Select aria-label="Default select example" onChange={(e) => setNote(e.target.value)} required={true}>
-        <option value={note}>Open this select menu</option>
+        <option value="0">Open this select menu</option>
         {tabNote.map((elemt,index)=>(
         <option key={index+1} value={elemt}>{elemt}</option>
         ))}
@@ -71,8 +95,21 @@ const AddMovie = ({ movies, setmovies }) => {
             )}
           </div>
         )}
-      <Button as="input" type="submit" value="Ajouter film" />
+     
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+      <Button variant="primary" type="submit">
+        Enregister
+      </Button>
     </Form>
+
+    </Modal.Body>
+    <Modal.Footer>
+     
+    </Modal.Footer>
+  </Modal>
+  </>
   )
 }
 
