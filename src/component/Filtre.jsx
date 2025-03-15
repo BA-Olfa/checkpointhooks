@@ -7,12 +7,12 @@ import { Col } from 'react-bootstrap';
 
 
 const Filtre = ({ movies, setmovies,originalMovies }) => {
-  const tabNote=[1,2,3,4,5,6,7,8,9,10];
+  const tabNote=[0,1,2,3,4,5,6,7,8,9,10];
   const [titre, setTitre] = useState('');
-  const [note, setNote] = useState(0);
-  const handleFilter = () => {
-    const filtrerMovies = movies.filter(
-      (movie) =>  (titre ? movie.titre.includes(titre) : true) && (note>0 ? parseInt(movie.note) === parseInt(note): true)
+  const [note, setNote] = useState('0');
+  const handleFilter = () => {  
+    const filtrerMovies = originalMovies.filter(
+      (movie) =>  (titre ? movie.titre.includes(titre) : true) && (parseInt(note)>0 ? parseInt(movie.note) === parseInt(note): true)
     );
     setmovies(filtrerMovies);
   };
@@ -29,9 +29,8 @@ const Filtre = ({ movies, setmovies,originalMovies }) => {
       <Form.Group className="mb-3">
         <Form.Label>Note</Form.Label>
         <Form.Select aria-label="Default select example" onChange={(e) => setNote(e.target.value)}>
-        <option value={note}>Tous</option>
         {tabNote.map((elemt,index)=>(
-        <option key={index+1} value={elemt}>{elemt}</option>
+        <option key={index+1} value={elemt}>{elemt>0 ?elemt:'Tous'}</option>
         ))}
         
         </Form.Select>

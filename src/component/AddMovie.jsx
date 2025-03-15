@@ -45,7 +45,7 @@ const AddMovie = ({ movies, setmovies }) => {
     <>
     <Form>
    
-    <Row xs={1} md={6} className="g-1" Style="padding-top: 10px;">
+    <Row xs={1} md={6} className="g-1" style={{paddingTop: '10px'}}>
       <Col xs={2}>
       <Button variant="primary" onClick={handleShow}>Ajouter Film</Button>
       </Col>
@@ -69,7 +69,7 @@ const AddMovie = ({ movies, setmovies }) => {
         <Form.Group className="mb-3">
           <Form.Label>Note</Form.Label>
           <Form.Select aria-label="Default select example" onChange={(e) => setNote(e.target.value)} required={true}>
-          <option value="0">Open this select menu</option>
+          <option value={note}>Open this select menu</option>
           {tabNote.map((elemt,index)=>(
           <option key={index+1} value={elemt}>{elemt}</option>
           ))}
